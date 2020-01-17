@@ -133,7 +133,7 @@ cout<<"\tNO DATA FOR NOW\n";
 }
 int main()
 {
-	cout<<"\t\t***STUDENT'S STUDENT***\n";
+	cout<<"\t\t***STUDENT'S RECORD***\n";
 label:
 STUDENT S;
 int choice,sID;
