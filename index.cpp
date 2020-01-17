@@ -16,27 +16,35 @@ int GETST_ID()
 {return ST_ID;
 }
 void ReadDetails()
-{cout<<"Enter Student ID \n";
+{cout<<"\tEnter Student ID : ";
 cin>>ST_ID;
-cout<<"Enter Name of Student \n";
-cin.getline(ST_Name,50);
-cout<<"Enter Marks \n";
+cout<<" \tEnter Name of Student (Separated by Underscore) : ";
+cin>>ST_Name;
+cout<<"\tEnter SGPA : ";
 cin>>ST_Marks;
 }
+
 void ShowDetails()
-{cout<<"ID student "<<ST_ID<<endl;
-cout<<"Student Name "<<ST_Name<<endl;
-cout<<"Student Marks "<<ST_Marks<<endl;}
+{
+cout<<"\tID student : "<<ST_ID<<endl;
+cout<<"\tStudent Name : "<<ST_Name<<endl;
+cout<<"\tStudent SGPA : "<<ST_Marks<<endl;
+}
+
 void ADDRECORD()
-{fstream fin;
+{
+fstream fin;
 fin.open("Student.dat",ios::in|ios::binary|ios::app);
 STUDENT S;
 S.ReadDetails();
 fin.write((char*)&S,sizeof(S));;
 fin.close();
 }
+
+
 void SEARCH(int id)
-{ STUDENT S;
+{ 
+STUDENT S;
 int flag=0;
 fstream fin;
 fin.open("Student.dat",ios::in|ios::binary|ios::app) ;
@@ -49,13 +57,15 @@ cout<<endl;
 flag=1;
 }
 } fin.close();
-if(flag!=1) cout<<"No match Found";
+if(flag!=1) cout<<"\t***No match Found***";
 }
+
 void DELETE()
 {int dID,choice3;
 STUDENT S;
+int ff=0;
 label2:
-cout<<"Enter The Student ID whose record is to be DELETED \n";
+cout<<"\tEnter The Student ID whose record is to be DELETED : ";
 cin>>dID;
 fstream fin2;
 fin2.open("temp.dat",ios::out|ios::binary|ios::in|ios::app);
@@ -63,36 +73,43 @@ fstream fin;
 fin.open("Student.dat",ios::in|ios::binary|ios::app);
 while(fin.read((char*)&S,sizeof(S)))
 { if(dID==S.GETST_ID())
-{S.ShowDetails();
+{ cout<<"\n\tDATA FOUND : "<<endl;
+ff=1;
+S.ShowDetails();
 }
 else
 fin2.write((char*)&S,sizeof(S)) ;
 }
-cout<<"Do You Want to continue (1 for YES and 0 for NO) \n";
+if(ff==0)
+{
+cout<<"\n\tDATA NOT FOUND\n\n";
+}
+else
+{
+cout<<"\n\tDo You Want to continue (1 for YES and 0 for NO) : ";
 cin>>choice3;
-if(choice3==0)
-{ goto label2;
-} else if(choice3==1)
+if(choice3==1)
 {
 fin2.close();
 fin.close();
 remove("Student.dat");
 rename("temp.dat","Student.dat");
-ShowRecord();
+cout<<endl;
+}
 }
 }
 void MODIFY()
 {
-cout<<"Enter new details "<<endl;
+cout<<"\tEnter new details \n\n";
 int NewID;
 
 char Newname[20];
 float Newmarks;
-cout<<"Enter new Student ID"<<endl;
+cout<<"\tEnter new Student ID : ";
 cin>>NewID;
-cout<<"Enter new Student's name"<<endl;
+cout<<"\tEnter new Student's Name : ";
 cin.getline(Newname,20);
-cout<<"Enter new Student's marks"<<endl;
+cout<<"\tEnter new Student's SGPA : ";
 cin>>Newmarks;
 ST_ID=NewID;
 strcpy(ST_Name,Newname);
@@ -102,44 +119,52 @@ ST_Marks=Newmarks;
 void ShowRecord()
 {STUDENT S;
 fstream fin;
+int ff=0;
 fin.open("Student.dat",ios::in|ios::binary|ios::app) ;
+
 while(fin.read((char*)&S,sizeof(S)))
-{S.ShowDetails();
+{
+	ff=1;
+S.ShowDetails();
 cout<<endl;
 } fin.close();
+if(ff==0)
+cout<<"\tNO DATA FOR NOW\n";
 }
 int main()
-{label:
+{
+	cout<<"\t\t***STUDENT'S STUDENT***\n";
+label:
 STUDENT S;
 int choice,sID;
 char choice2;
-cout<<"Enter Your Choice"<<endl;
-cout<<"1.Add Record of Student \n 2.Search for Student \n 3. Delete a particular record \n 4.Modify a record"<<endl;
+cout<<"\tEnter Your Choice"<<endl;
+cout<<"\t1.Add Record of Student \n\t2.Search for Student \n\t3. Delete a particular record \n\t4.Modify a record \n\t5. See All Records\n\t";
 cin>>choice;
 if(choice==1)
 {
 S.ADDRECORD();
-cout<<"Do you want to see all records (Y) \n";
+cout<<"\tDo you want to see all records (Y) : ";
 cin>>choice2;
 if(choice2=='Y' || choice2=='y')
 ShowRecord();
 cout<<endl;
-
+cout<<endl<<endl;
 goto label;
 }
 else
 if(choice==2)
-{ cout<<"Enter the Student ID "<<endl;
+{ cout<<"\tEnter the Student ID : ";
 cin>>sID;
 S.SEARCH(sID);
-cout<<endl;
+cout<<endl;cout<<endl<<endl;
 goto label;
 }
 else
 if(choice==3)
 { S.DELETE();
 cout<<endl;
-
+cout<<endl<<endl;
 goto label;
 }
 else
@@ -149,7 +174,7 @@ fstream fin;
 fin.open("Student.dat",ios::in|ios::out|ios::binary|ios::app);
 fin.seekg(0);
 int MID,location;
-cout<<"Enter id to modify "<<endl;
+cout<<"\tEnter id to modify : ";
 cin>>MID;
 while(fin.read((char*)&S,sizeof(S)))
 {location=fin.tellg();
@@ -162,8 +187,13 @@ fin.write((char*)&S,sizeof(S));
 fin.close();
 ShowRecord();
 cout<<endl;
-
+cout<<endl<<endl;
 goto label;
 }
-else return 0;
+else if(choice==5)
+{
+ShowRecord();
+cout<<endl<<endl;
+goto label;
+}else  return 0;
 }
