@@ -4,6 +4,9 @@
 #include<cstring>
 
 using namespace std;
+
+void ShowRecord();
+
 class STUDENT
 {int ST_ID;
 char ST_Name[50];
@@ -16,7 +19,7 @@ void ReadDetails()
 {cout<<"Enter Student ID \n";
 cin>>ST_ID;
 cout<<"Enter Name of Student \n";
-gets(ST_Name);
+cin.getline(ST_Name,50);
 cout<<"Enter Marks \n";
 cin>>ST_Marks;
 }
@@ -88,7 +91,7 @@ float Newmarks;
 cout<<"Enter new Student ID"<<endl;
 cin>>NewID;
 cout<<"Enter new Student's name"<<endl;
-gets(Newname);
+cin.getline(Newname,20);
 cout<<"Enter new Student's marks"<<endl;
 cin>>Newmarks;
 ST_ID=NewID;
@@ -111,8 +114,7 @@ STUDENT S;
 int choice,sID;
 char choice2;
 cout<<"Enter Your Choice"<<endl;
-cout<<"1.Add Record of Student \n 2.Search for Student \n 3. Delete a particular record \n 4.Modify
-a record "<<endl;
+cout<<"1.Add Record of Student \n 2.Search for Student \n 3. Delete a particular record \n 4.Modify a record"<<endl;
 cin>>choice;
 if(choice==1)
 {
