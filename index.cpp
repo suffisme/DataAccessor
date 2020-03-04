@@ -24,7 +24,7 @@ cin>>ST_Marks;
 void ShowDetails()
 {
 cout<<"\tID student : "<<ST_ID<<"\n";
-cout<<"\tStudent Name : "<<ST_Name<<endl;
+cout<<"\tStudent Name : "<<ST_Name<<"\n";
 cout<<"\tStudent SGPA : "<<ST_Marks<<endl;
 }
 
