@@ -25,7 +25,7 @@ void ShowDetails()
 {
 cout<<"\tID student : "<<ST_ID<<"\n";
 cout<<"\tStudent Name : "<<ST_Name<<"\n";
-cout<<"\tStudent SGPA : "<<ST_Marks<<endl;
+cout<<"\tStudent SGPA : "<<ST_Marks<<"\n";
 }
 
 void ADDRECORD()
