@@ -62,28 +62,31 @@ void DELETE()
 STUDENT S;
 int ff=0;
 label2:
-cout<<"\tEnter The Student ID whose record is to be DELETED : ";
+cout<<"\tEnter The Student ID whose record is to be DELETED :  ";
 cin>>dID;
 fstream fin2;
 fin2.open("temp.dat",ios::out|ios::binary|ios::in|ios::app);
 fstream fin;
 fin.open("Student.dat",ios::in|ios::binary|ios::app);
 while(fin.read((char*)&S,sizeof(S)))
-{ if(dID==S.GETST_ID())
-{ cout<<"\n\tDATA FOUND : "<<endl;
-ff=1;
-S.ShowDetails();
-}
+{
+	if(dID==S.GETST_ID())
+
+	{
+		cout<<"\n\tDATA FOUND : "<<endl;
+		ff=1;
+		S.ShowDetails();
+	}
 else
-fin2.write((char*)&S,sizeof(S)) ;
+	fin2.write((char*)&S,sizeof(S)) ;
 }
 if(ff==0)
 {
-cout<<"\n\tDATA NOT FOUND\n\n";
+	cout<<" \n\tDATA NOT FOUND\n\n";
 }
 else
 {
-cout<<"\n\tDo You Want to continue (1 for YES and 0 for NO) : ";
+cout<<" \n\tDo You Want to continue (1 for YES and 0 for NO) : ";
 cin>>choice3;
 if(choice3==1)
 {
