@@ -3,10 +3,18 @@
 A c++ based program that allows DATA FILE HANDLING on ***BINARY DATA*** file
 > If further improved by adding password in binary form, it can be used sucessfully as a database for storing students record.
 
-### Libraries Used:
-```
-string
-fstream
+### Libraries and Methods Used:
+```sh
+# Libraries:
+>> string
+>> fstream
+>> iostream
+
+# Method:
+  ios::binary
+  ios::app
+  ios::in
+  ios::out
 ```
 
 ### Functions Used:
