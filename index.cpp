@@ -23,7 +23,7 @@ public:
 		cout<<"\tEnter Student ID : ";
 		cin>>ST_ID;
 		cin.ignore();
-		cout<<" \tEnter Name of Student (Separated by Underscore) : ";
+		cout<<" \tEnter Name of Student : ";
 		cin.getline(ST_Name,50);
 		cout<<"\tEnter SGPA : ";
 		cin>>ST_Marks;
@@ -57,6 +57,8 @@ public:
 		{
 			if(id==S.GETST_ID())
 			{
+				if(flag == 0)
+				cout<<"\n\t**Data Found**\n";
 				S.ShowDetails();
 				cout<<endl;
 				flag=1;
@@ -124,7 +126,7 @@ public:
 		ST_ID=NewID;
 		strcpy(ST_Name,Newname);
 		ST_Marks=Newmarks;
-		cout<<"Data Updated. Thank You.";
+		cout<<"\n\tData Updated. Thank You.\n";
 	}
 };
 
@@ -160,7 +162,7 @@ int main()
 	if(choice==1)
 	{
 		S.ADDRECORD();
-		cout<<"\tDo you want to see all records (Y) : ";
+		cout<<"\n\tDo you want to see all records (Y) : ";
 		cin>>choice2;
 		if(choice2=='Y' || choice2=='y')
 			ShowRecord();
@@ -170,7 +172,7 @@ int main()
 	}
 	else if(choice==2)
 	{
-		cout<<"\tEnter the Student ID : ";
+		cout<<"\n\tEnter the Student ID to be Searched : ";
 		cin>>sID;
 		S.SEARCH(sID);
 		cout<<endl;cout<<endl<<endl;
@@ -189,7 +191,7 @@ int main()
 		fin.open("Student.dat",ios::in|ios::out|ios::binary|ios::app);
 		fin.seekg(0);
 		int MID,location;
-		cout<<"\tEnter id to modify : ";
+		cout<<"\n\tEnter Student ID  to modify : ";
 		cin>>MID;
 		while(fin.read((char*)&S,sizeof(S)))
 		{
@@ -202,8 +204,6 @@ int main()
 			}
 		}
 		fin.close();
-		ShowRecord();
-		cout<<endl;
 		cout<<endl<<endl;
 		goto label;
 	}
