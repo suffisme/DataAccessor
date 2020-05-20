@@ -22,20 +22,24 @@ fstream
 ### Screenshots of the Program:
 
 - HomeScreen
-![](Screenshots/ss0.jpg)
+![](SCREENSHOTS/ss0.jpg)
 <br>
+
 - Adding Data
-![](Screenshots/ss1.jpg)
+![](SCREENSHOTS/ss1.jpg)
 <br>
+
 - Viewing Data
-![](Screenshots/ss2.jpg)
+![](SCREENSHOTS/ss2.jpg)
 <br>
+
 - Searching Data 
 	- Data Found
 	- Data Not Found
-![](Screenshots/ss3.jpg)
+![](SCREENSHOTS/ss3.jpg)
 <br>
+
 - Deleting Data
 	- Data Deleted
 	- Data is not there
-![](Screenshots/ss4.jpg)
+![](SCREENSHOTS/ss4.jpg)
